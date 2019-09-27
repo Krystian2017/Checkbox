@@ -1,61 +1,62 @@
-const ValidationMessage = (props) => {
-  const { txt } = props
-  return (
-    <p>{txt}</p>
-  )
-}
+const ValidationMessage = props => {
+  const { txt } = props;
+  return <p>{txt}</p>;
+};
 
-const OrderForm = (props) => {
+const OrderForm = props => {
   const { submit, isConfirmed, change } = props;
   return (
     <form onSubmit={submit}>
       <input type="checkbox" id="age" onChange={change} checked={isConfirmed} />
-      <label htmlFor="age">Mam co najmniej 16 lata</label>
+      <label htmlFor="age">I am at least 16 years old</label>
       <br />
-      <button type="submit">Kup bilet</button>
+      <button type="submit">buy ticket</button>
     </form>
-  )
-}
+  );
+};
 
 class TicketShop extends React.Component {
-
   state = {
     isConfirmed: false,
     isFormSubmitted: false
-  }
+  };
 
   handleCheckboxChange = () => {
     this.setState({
       isConfirmed: !this.state.isConfirmed,
-      isFormSubmitted: false,
-    })
-  }
+      isFormSubmitted: false
+    });
+  };
 
-  handleFormSubmit = (e) => {
-    e.preventDefault()
+  handleFormSubmit = e => {
+    e.preventDefault();
     if (!this.state.isFormSubmitted) {
       this.setState({
         isFormSubmitted: true
-      })
+      });
     }
-  }
+  };
 
   displayMessage = () => {
     if (this.state.isFormSubmitted) {
       if (this.state.isConfirmed) {
-        return <ValidationMessage txt="Możesz obejrzeć film. Zapraszamy!" />
+        return <ValidationMessage txt="You can watch the movie. Welcome!" />;
       } else {
-        return <ValidationMessage txt="Nie możesz obejrzeć tego filmu jeśli masz mniej niż 16 lat!" />
+        return (
+          <ValidationMessage txt="You cannot watch this movie if you are under 16 years old!" />
+        );
       }
-    } else { return null }
-  }
+    } else {
+      return null;
+    }
+  };
 
   render() {
-    const { isConfirmed, isFormSubmitted } = this.state
+    const { isConfirmed, isFormSubmitted } = this.state;
 
     return (
       <>
-        <h1>Kup bilet na horror roku!</h1>
+        <h1>Buy a ticket for the horror of the year!</h1>
         <OrderForm
           change={this.handleCheckboxChange}
           submit={this.handleFormSubmit}
@@ -63,8 +64,8 @@ class TicketShop extends React.Component {
         />
         {this.displayMessage()}
       </>
-    )
+    );
   }
 }
 
-ReactDOM.render(<TicketShop />, document.getElementById('root'))
+ReactDOM.render(<TicketShop />, document.getElementById("root"));
