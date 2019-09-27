@@ -1,0 +1,19 @@
+body {
+  padding: 20px;
+}
+
+div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1,
+form,
+p {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  margin: 20px;
+}

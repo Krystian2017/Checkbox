@@ -55,7 +55,12 @@ class TicketShop extends React.Component {
     const { isConfirmed, isFormSubmitted } = this.state;
 
     return (
-      <>
+      <div>
+        <img
+          src={
+            "https://static4.redcart.pl/templates/images/thumb/9595/800/800/pl/0/templates/images/products/9595/124-31470_0.jpg"
+          }
+        />
         <h1>Buy a ticket for the horror of the year!</h1>
         <OrderForm
           change={this.handleCheckboxChange}
@@ -63,7 +68,7 @@ class TicketShop extends React.Component {
           checked={isConfirmed}
         />
         {this.displayMessage()}
-      </>
+      </div>
     );
   }
 }
